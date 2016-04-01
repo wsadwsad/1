@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Impact Game</title>
+    <link rel='stylesheet' href='/public/stylesheets/style.css' />
+	<script type="text/javascript" src="lib/impact/impact.js"></script>
+	<script type="text/javascript" src="lib/game/main.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var namerand = Math.floor(Math.random()*999);
+		var playername = "player" + namerand;
+        // start connection by creating socket on localhost port 8080
+		var socket = io();
+
+		socket.on('addplayer', function (playerlist, otherplayername) {
+            window.alert("addplayer");
+			var player = ig.game.getEntitiesByType( EntityPlayer )[0];
+			player.messagebox = player.messagebox + '\n' + otherplayername + ' joined';
+
+			for(var i = 0;i < playerlist.length;i++)
+			{
+				if(player.gamename != playerlist[i])
+					ig.game.spawnEntity( EntityOtherplayer, 160, 260, {gamename:playerlist[i]} );
+            }
+		});
+
+	</script>
+
+	<canvas id="canvas"></canvas>
+</body>
+</html>
