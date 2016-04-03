@@ -2,10 +2,17 @@
 <html>
 <head>
 	<title>Impact Game</title>
-    <link rel='stylesheet' href='/public/stylesheets/style.css' />
+    <!-- We advise mobile browser to leave the page unscaled; If scaling is
+        neccessary, we will do it in the canvas element itself.
+        Also make sure to hide address bar and navigation buttons and make the
+        status bar transparent on iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<script type="text/javascript" src="lib/impact/impact.js"></script>
 	<script type="text/javascript" src="lib/game/main.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+    <link rel='stylesheet' href='stylesheets/style.css' />
 </head>
 <body>
 
