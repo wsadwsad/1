@@ -38,6 +38,19 @@ io.on('connection', function (socket) {
         playerlist.push(newplayername); //list of current players
         io.sockets.emit('addplayer', playerlist, newplayername);  // broadcase to every player a new player has joined
     });
+
+    socket.on('disconnect', function(){
+        delete playerlist[socket.clientname];
+        for(var i in playerlist)
+        {
+            if(playerlist[i] == socket.clientname)
+            {
+                playerlist.splice(i, 1);
+            }
+        }
+        socket.broadcast.emit('message',socket.clientname);
+        socket.broadcast.emit('netreplayer',playerlist);
+    });
 });
 
 // catch 404 and forward to error handler

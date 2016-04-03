@@ -115,7 +115,7 @@ ig.module (
         // set timer to decrease the number of packets sent
         if(this.nettimer < 1) {
             this.nettimer = 5;
-            //socket.emit('recievedata', this.pos.x, this.pos.y, currentanimation, this.gamename);
+            socket.emit('recievedata', this.pos.x, this.pos.y, currentanimation, this.gamename);
         }
         this.nettimer = this.nettimer - 1;
 
