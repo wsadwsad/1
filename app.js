@@ -29,6 +29,8 @@ http.listen(port, function() {
 io.on('connection', function (socket) {
     console.log('a user connected');
     socket.on('recievedata', function (positionx, positiony, currentanimation, gamename) {
+
+        // broadcase the player's current location in the game to every player.
         socket.broadcast.emit('playermove', positionx, positiony, currentanimation, gamename);
     });
     
@@ -36,9 +38,15 @@ io.on('connection', function (socket) {
         /* add a new property to socket and pass it the new player's name to divide each socket by its own name */
         socket.clientname = newplayername;
         playerlist.push(newplayername); //list of current players
-        io.sockets.emit('addplayer', playerlist, newplayername);  // broadcase to every player a new player has joined
+        
+        // broadcast to every player a new player has joined. Run 'addplayer' on the client.
+        io.sockets.emit('addplayer', playerlist, newplayername);  
     });
 
+    /*
+     *  When the player closes the browser then disconnect them and remove them from
+     *  the list of players and broadcast that the player has disconnnected.
+     */
     socket.on('disconnect', function(){
         delete playerlist[socket.clientname];
         for(var i in playerlist)

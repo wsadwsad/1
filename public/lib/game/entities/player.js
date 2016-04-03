@@ -1,5 +1,5 @@
 ig.module (
-    'game.entities.player'      // name of file
+    'game.entities.player'     
 )
 
 .requires(
@@ -42,6 +42,8 @@ ig.module (
             this.addAnim( 'idleright', 0.1, [7] );
 
             //this.currentAnim = this.anims.idledown;
+
+            // client calls 'initializeplayer' to the server
             socket.emit('initializeplayer', this.gamename);
 	    },
 
