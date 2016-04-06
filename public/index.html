@@ -26,12 +26,14 @@
 		socket.on('addplayer', function (playerlist, otherplayername) {
 			console.log('addplayer');
 			var player = ig.game.getEntitiesByType( EntityPlayer )[0];
-			player.messagebox = player.messagebox + '\n' + otherplayername + ' joined';
+            var otherplayer = ig.game.getEntitiesByType(EntityOtherplayer)[0]
+            player.messagebox = player.messagebox + '\n' + otherplayername + ' joined';
 
 			for(var i = 0;i < playerlist.length;i++)
 			{
 				if(player.gamename != playerlist[i])
 					ig.game.spawnEntity( EntityOtherplayer, 160, 260, {gamename:playerlist[i]} );
+                //ig.game.spawnEntity()
             }
 		});
 

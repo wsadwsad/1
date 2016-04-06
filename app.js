@@ -48,6 +48,7 @@ io.on('connection', function (socket) {
      *  the list of players and broadcast that the player has disconnnected.
      */
     socket.on('disconnect', function(){
+        console.log('a user disconnected');
         delete playerlist[socket.clientname];
         for(var i in playerlist)
         {
