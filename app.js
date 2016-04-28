@@ -13,12 +13,12 @@ app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-http.listen(3000, function() {
+var port = process.env.PORT || '3000';
+http.listen(port, function() {
     console.log('listening on port 3000');
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
-//console.log('listening on port 1337')
 io.sockets.on('connection', function(socket) {
 
     io.set('log level', 1);
