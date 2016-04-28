@@ -1,12 +1,13 @@
 //var io = require('socket.io').listen(1337);
 
+require('./public/impactConnectServer.js');
+
 var app = require('express')();
 var express = require('express');
 var swig = require('swig');
 var path = require('path');
 var http = require('http').createServer(app);
 var io = require('socket.io').listen(http);
-
 
 app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));

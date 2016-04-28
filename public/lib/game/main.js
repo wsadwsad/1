@@ -235,7 +235,7 @@ ig.module(
 
                 var startText = ig.ua.mobile
                     ? 'Press Button to Play!'
-                    : 'Press asdasd to Play!';
+                    : 'Press any key to Play!';
 
                 this.font.draw( startText, cx, 420, ig.Font.ALIGN.CENTER);
 
