@@ -20,7 +20,11 @@ ig.module(
         'game.levels.level1',
         'game.levels.level2',
         'game.levels.level3',
-        'game.levels.level4'
+        'game.levels.level4',
+
+        'plugins.impactconnect',
+        'plugins.notification-manager'
+
 
 	)
 
@@ -44,6 +48,9 @@ ig.module(
 
                 // Load the LevelGrasslands as required above
                 this.loadLevel( LevelLevel1 );
+                var player = this.getEntitiesByType(EntityPlayer)[0];
+
+                this.gamesocket = new ig.ImpactConnect(player, 1337);
 
             },
 
@@ -89,6 +96,7 @@ ig.module(
             update: function() {
                 // Update all entities and BackgroundMaps
                 this.parent();
+                this.player = this.getEntitiesByType(EntityPlayer)[0];
 
                 // Camera follows the player
                 this.camera.follow( this.player );
@@ -134,6 +142,28 @@ ig.module(
                 if( window.myTouchButtons ) {
                     window.myTouchButtons.draw();
                 }
+            },
+
+            getEntityById: function(id){
+                for(var i in this.entities){
+                    if(this.entities[i].id === id){
+                        return this.entities[i];
+                    }
+                }
+                return null;
+            },
+            getEntityByRemoteId: function(id){
+                var tEntities = this.getEntitiesByType(EntityPlayer);
+                for(var i in tEntities){
+                    if(tEntities[i].remoteId === id){
+                        return tEntities[i];
+                    }
+                }
+                return null;
+            },
+            write: function(text, pos){
+                this.note.spawnNote(this.font, text, pos.x, pos.y,
+                    {vel: { x: 0, y: 0 },  alpha: 0.5, lifetime: 2.2, fadetime: 0.3 });
             }
         });
 

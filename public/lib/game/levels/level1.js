@@ -1,17 +1,17 @@
 ig.module( 'game.levels.level1' )
-.requires( 'impact.image','game.entities.coin','game.entities.trigger','game.entities.hurt','game.entities.enemy1','game.entities.enemy2','game.entities.levelchange','game.entities.player' )
+.requires( 'impact.image','game.entities.enemy1','game.entities.coin','game.entities.trigger','game.entities.hurt','game.entities.enemy2','game.entities.levelchange','game.entities.player' )
 .defines(function(){
 LevelLevel1=/*JSON[*/{
 	"entities": [
 		{
-			"type": "EntityCoin",
-			"x": 656,
-			"y": 476
+			"type": "EntityEnemy1",
+			"x": 1200,
+			"y": 264
 		},
 		{
 			"type": "EntityCoin",
-			"x": 536,
-			"y": 376
+			"x": 1496,
+			"y": 560
 		},
 		{
 			"type": "EntityCoin",
@@ -27,6 +27,11 @@ LevelLevel1=/*JSON[*/{
 			"type": "EntityCoin",
 			"x": 880,
 			"y": 284
+		},
+		{
+			"type": "EntityCoin",
+			"x": 536,
+			"y": 376
 		},
 		{
 			"type": "EntityTrigger",
@@ -45,6 +50,11 @@ LevelLevel1=/*JSON[*/{
 					"y": 32
 				}
 			}
+		},
+		{
+			"type": "EntityCoin",
+			"x": 656,
+			"y": 476
 		},
 		{
 			"type": "EntityCoin",
@@ -90,18 +100,8 @@ LevelLevel1=/*JSON[*/{
 		},
 		{
 			"type": "EntityCoin",
-			"x": 1496,
-			"y": 560
-		},
-		{
-			"type": "EntityCoin",
 			"x": 1652,
 			"y": 560
-		},
-		{
-			"type": "EntityEnemy1",
-			"x": 1200,
-			"y": 264
 		},
 		{
 			"type": "EntityEnemy1",
